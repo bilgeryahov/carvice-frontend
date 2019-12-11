@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { AuthRole } from '../auth-shared-form/auth-role.enum';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
-  isLoading$: Observable<boolean>;
+export class SignupComponent implements OnInit {
+  authRole: AuthRole;
 
-  onSubmit(form: NgForm) {
+  ngOnInit(): void {
+    this.authRole = AuthRole.SIGNUP;
+  }
+
+  onSubmitted(form: NgForm) {
     console.log(form);
   }
 }

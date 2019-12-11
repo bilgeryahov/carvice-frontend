@@ -1,1 +1,7 @@
-<p>login works!</p>
+<section>
+    <app-auth-shared-form
+        (submitted)="onSubmitted()"
+        [authRole]="authRole"
+    >
+    </app-auth-shared-form>
+</section>
