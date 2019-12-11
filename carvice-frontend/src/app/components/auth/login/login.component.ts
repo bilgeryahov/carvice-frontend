@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AuthRole } from '../auth-shared-form/auth-role.enum';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     this.authRole = AuthRole.LOGIN;
   }
 
-  onSubmitted(form: NgForm) {
+  onSubmitted(form: FormGroup) {
     console.log(form);
   }
 }

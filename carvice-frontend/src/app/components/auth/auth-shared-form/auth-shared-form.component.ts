@@ -8,7 +8,7 @@ import { AuthRole } from './auth-role.enum';
   styleUrls: ['./auth-shared-form.component.css']
 })
 export class AuthSharedFormComponent implements OnInit {
-  @Output() submitted: EventEmitter<null> = new EventEmitter<null>();
+  @Output() submitted: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Input() authRole: AuthRole;
   authSharedForm: FormGroup;
   authRoles = AuthRole;
@@ -25,6 +25,6 @@ export class AuthSharedFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted.emit();
+    this.submitted.emit(this.authSharedForm);
   }
 }
