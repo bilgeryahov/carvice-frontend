@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyDlEWeMDKHhwGA9Lm9TVqRAT6r15K8TTMw",
+    authDomain: "carvice-dev.firebaseapp.com",
+    databaseURL: "https://carvice-dev.firebaseio.com",
+    projectId: "carvice-dev",
+    storageBucket: "carvice-dev.appspot.com",
+    messagingSenderId: "351092682884",
+    appId: "1:351092682884:web:ca2967a8306399b19992d1",
+    measurementId: "G-S2PRS2PRDN"
+  }
 };
 
 /*

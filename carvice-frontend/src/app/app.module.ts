@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -13,6 +15,9 @@ import { DahsboardComponent } from './components/dahsboard/dahsboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AuthSharedFormComponent } from './components/auth/auth-shared-form/auth-shared-form.component';
+import { AuthService } from './services/auth/auth.service';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,9 +35,11 @@ import { AuthSharedFormComponent } from './components/auth/auth-shared-form/auth
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
