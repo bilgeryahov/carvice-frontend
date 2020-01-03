@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class AuthService {
   authChange: Subject<boolean>;
   private _isAuth: boolean;
 
-  constructor(private _router: Router, private _afAuth: AngularFireAuth) {
+  constructor(private _router: Router, private _afAuth: AngularFireAuth, private _snackbar: MatSnackBar) {
     this.authChange = new Subject<boolean>();
     this._isAuth = false;
   }
@@ -32,16 +33,14 @@ export class AuthService {
   }
 
   registerUser(email: string, password: string) {
-    // TODO: Better error handling.
     // TODO: Set display name via fullName.
     this._afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .catch(err => console.error(err));
+      .catch(err => this._snackbar.open(err.message, null, { duration: 3000 }));
   }
 
   login(email: string, password: string) {
-    // TODO: Better error handling.
     this._afAuth.auth.signInWithEmailAndPassword(email, password)
-      .catch(err => console.error(err));
+      .catch(err => this._snackbar.open(err.message, null, { duration: 3000 }));
   }
 
   logout() {
