@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AuthSharedFormComponent } from './components/auth/auth-shared-form/auth-shared-form.component';
 import { AuthService } from './services/auth/auth.service';
+import { UIService } from './services/ui/ui.service';
 
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/navigation/header/header.component';
@@ -43,7 +44,7 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

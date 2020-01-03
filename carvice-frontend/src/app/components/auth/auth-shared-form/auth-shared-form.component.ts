@@ -1,17 +1,23 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthRole } from './auth-role.enum';
+import { UIService } from 'src/app/services/ui/ui.service';
 
 @Component({
   selector: 'app-auth-shared-form',
   templateUrl: './auth-shared-form.component.html',
   styleUrls: ['./auth-shared-form.component.css']
 })
-export class AuthSharedFormComponent implements OnInit {
+export class AuthSharedFormComponent implements OnInit, OnDestroy {
   @Output() submitted: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Input() authRole: AuthRole;
   authSharedForm: FormGroup;
   authRoles = AuthRole;
+  isLoading: boolean = false;
+  private _isLoadingSub: Subscription;
+
+  constructor(private _uiService: UIService) { }
 
   ngOnInit(): void {
     this.authSharedForm = new FormGroup({
@@ -22,6 +28,12 @@ export class AuthSharedFormComponent implements OnInit {
     if (this.authRole === AuthRole.SIGNUP) {
       this.authSharedForm.addControl('fullName', new FormControl('', { validators: [Validators.required] }))
     }
+
+    this._isLoadingSub = this._uiService.loadingStateChanged.subscribe(isLoading => this.isLoading = isLoading);
+  }
+
+  ngOnDestroy(): void {
+    this._isLoadingSub.unsubscribe();
   }
 
   onSubmit() {
