@@ -18,6 +18,8 @@ import { AuthSharedFormComponent } from './components/auth/auth-shared-form/auth
 import { AuthService } from './services/auth/auth.service';
 
 import { environment } from '../environments/environment';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { environment } from '../environments/environment';
     LoginComponent,
     WelcomeComponent,
     DahsboardComponent,
-    AuthSharedFormComponent
+    AuthSharedFormComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
