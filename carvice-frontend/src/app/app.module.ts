@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { DahsboardComponent } from './components/dahsboard/dahsboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AuthSharedFormComponent } from './components/auth/auth-shared-form/auth-shared-form.component';
@@ -28,7 +28,7 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     SignupComponent,
     LoginComponent,
     WelcomeComponent,
-    DahsboardComponent,
+    DashboardComponent,
     AuthSharedFormComponent,
     HeaderComponent,
     SidenavListComponent
