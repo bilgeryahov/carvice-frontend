@@ -6,12 +6,17 @@
             </mat-icon>
         </button>
     </div>
-    <div><a routerLink="/">Carvice</a></div>
+    <div>
+        <a routerLink="/">Carvice</a>
+        |
+        <a routerLink="/help">Help</a>
+    </div>
     <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
             <li *ngIf="!isAuth"><a routerLink="/signup">Sign Up</a></li>
             <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
             <li *ngIf="isAuth"><a routerLink="/dashboard">Dashboard</a></li>
+            <li *ngIf="isAuth"><a routerLink="/profile">Profile</a></li>
             <li *ngIf="isAuth"><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
         </ul>
     </div>

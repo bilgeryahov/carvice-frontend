@@ -21,6 +21,8 @@ import { UIService } from './services/ui/ui.service';
 import { environment } from '../environments/environment';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HelpComponent } from './components/help/help.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SidenavListComponent } from './components/navigation/sidenav-list/siden
     DashboardComponent,
     AuthSharedFormComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    ProfileComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
