@@ -1,0 +1,23 @@
+<div fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40%">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="brand">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
+        <mat-cell *matCellDef="let vehicle">{{ vehicle.brand }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="model">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Model</mat-header-cell>
+        <mat-cell *matCellDef="let vehicle">{{ vehicle.model }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="plate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Plate</mat-header-cell>
+        <mat-cell *matCellDef="let vehicle">{{ vehicle.plate }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
