@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -23,6 +24,7 @@ import { HeaderComponent } from './components/navigation/header/header.component
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HelpComponent } from './components/help/help.component';
+import { MyVehiclesComponent } from './components/dashboard/my-vehicles/my-vehicles.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { HelpComponent } from './components/help/help.component';
     HeaderComponent,
     SidenavListComponent,
     ProfileComponent,
-    HelpComponent
+    HelpComponent,
+    MyVehiclesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { HelpComponent } from './components/help/help.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [AuthService, UIService],
   bootstrap: [AppComponent]
