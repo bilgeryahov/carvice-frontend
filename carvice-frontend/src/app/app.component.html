@@ -3,29 +3,29 @@
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a href="#signin" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-        <i class="fa fa-angle-double-right w3-xxlarge"></i>
-        <p>SIGN IN</p>
-    </a>
-    <a href="#signup" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth()" href="#signup" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-address-card w3-xxlarge"></i>
         <p>SIGN UP</p>
     </a>
-    <a href="#profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth()" href="#signin" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+        <i class="fa fa-angle-double-right w3-xxlarge"></i>
+        <p>SIGN IN</p>
+    </a>
+    <a *ngIf="isAuth()" href="#dashboard" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+        <i class="fa fa-eye w3-xxlarge"></i>
+        <p>DASHBOARD</p>
+    </a>
+    <a *ngIf="isAuth()" href="#profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>PROFILE</p>
     </a>
-    <a href="#dashboard" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-        <i class="fa fa-eye w3-xxlarge"></i>
-        <p>DASHBOARD</p>
+    <a *ngIf="isAuth()" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+        <i class="fa fa-angle-double-left w3-xxlarge"></i>
+        <p>SIGN OUT</p>
     </a>
     <a href="#aboutus" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>ABOUT US</p>
-    </a>
-    <a class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-        <i class="fa fa-angle-double-left w3-xxlarge"></i>
-        <p>SIGN OUT</p>
     </a>
 </nav>
 
