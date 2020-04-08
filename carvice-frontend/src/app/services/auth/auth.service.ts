@@ -6,7 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthService {
   // properties
-  public isAuth = () => false;
+  public isAuth = () => true;
 
   constructor(private _firebaseAuth: AngularFireAuth) { }
 }
