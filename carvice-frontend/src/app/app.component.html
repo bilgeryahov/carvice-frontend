@@ -1,21 +1,21 @@
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-blue">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a routerLink="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a *ngIf="!isAuth()" href="#signup" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth()" routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-address-card w3-xxlarge"></i>
         <p>SIGN UP</p>
     </a>
-    <a *ngIf="!isAuth()" href="#signin" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth()" routerLink="/signin" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-angle-double-right w3-xxlarge"></i>
         <p>SIGN IN</p>
     </a>
-    <a *ngIf="isAuth()" href="#dashboard" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="isAuth()" routerLink="/dashboard" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-eye w3-xxlarge"></i>
         <p>DASHBOARD</p>
     </a>
-    <a *ngIf="isAuth()" href="#profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="isAuth()" routerLink="/profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>PROFILE</p>
     </a>
@@ -23,7 +23,7 @@
         <i class="fa fa-angle-double-left w3-xxlarge"></i>
         <p>SIGN OUT</p>
     </a>
-    <a href="#aboutus" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a routerLink="/aboutus" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>ABOUT US</p>
     </a>
@@ -32,14 +32,20 @@
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium w3-blue">
     <div class="w3-bar w3-center w3-tiny">
-        <a href="#" class="w3-bar-item w3-button small-navbar-button w3-padding-small">HOME</a>
-        <a *ngIf="!isAuth()" href="#signup" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN UP</a>
-        <a *ngIf="!isAuth()" href="#signin" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN IN</a>
-        <a *ngIf="isAuth()" href="#dashboard" class="w3-bar-item w3-button small-navbar-button w3-padding-small">DBOARD</a>
-        <a *ngIf="isAuth()" href="#profile" class="w3-bar-item w3-button small-navbar-button w3-padding-small">PROFILE</a>
+        <a routerLink="/" class="w3-bar-item w3-button small-navbar-button w3-padding-small">HOME</a>
+        <a *ngIf="!isAuth()" routerLink="/signup"
+            class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN UP</a>
+        <a *ngIf="!isAuth()" routerLink="/signin"
+            class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN IN</a>
+        <a *ngIf="isAuth()" routerLink="/dashboard"
+            class="w3-bar-item w3-button small-navbar-button w3-padding-small">DBOARD</a>
+        <a *ngIf="isAuth()" routerLink="/profile"
+            class="w3-bar-item w3-button small-navbar-button w3-padding-small">PROFILE</a>
         <a *ngIf="isAuth()" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGNOUT</a>
-        <a href="#aboutus" class="w3-bar-item w3-button small-navbar-button w3-padding-small">ABOUT</a>
+        <a routerLink="/aboutus" class="w3-bar-item w3-button small-navbar-button w3-padding-small">ABOUT</a>
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div id="main">
+    <router-outlet></router-outlet>
+</div>
