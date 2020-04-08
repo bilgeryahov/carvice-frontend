@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -19,7 +20,8 @@ import { AuthService } from './services/auth/auth.service';
     SignupComponent,
     DashboardComponent,
     ProfileComponent,
-    AboutusComponent
+    AboutusComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
