@@ -4,13 +4,15 @@
 
 export const environment = {
   production: false,
-  apiKey: "AIzaSyA_dTR2V8gFSObc0bS2Za6qCckvyy3JHIg",
-  authDomain: "carvice-b21b7.firebaseapp.com",
-  databaseURL: "https://carvice-b21b7.firebaseio.com",
-  projectId: "carvice-b21b7",
-  storageBucket: "carvice-b21b7.appspot.com",
-  messagingSenderId: "590443362599",
-  appId: "1:590443362599:web:38a50f700cc7dc58f15102"
+  firebase: {
+    apiKey: "AIzaSyA_dTR2V8gFSObc0bS2Za6qCckvyy3JHIg",
+    authDomain: "carvice-b21b7.firebaseapp.com",
+    databaseURL: "https://carvice-b21b7.firebaseio.com",
+    projectId: "carvice-b21b7",
+    storageBucket: "carvice-b21b7.appspot.com",
+    messagingSenderId: "590443362599",
+    appId: "1:590443362599:web:38a50f700cc7dc58f15102"
+  }
 };
 
 /*
