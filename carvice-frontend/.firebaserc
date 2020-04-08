@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "carvice-b21b7": {
+      "hosting": {
+        "carvice-frontend": [
+          "carvice-b21b7"
+        ]
+      }
+    }
+  }
+}

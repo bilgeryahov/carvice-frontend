@@ -122,8 +122,13 @@
               "devServerTarget": "carvice-frontend:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "carvice-frontend"
 }
