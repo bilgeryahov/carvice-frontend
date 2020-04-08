@@ -6,10 +6,12 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth/auth.service';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
