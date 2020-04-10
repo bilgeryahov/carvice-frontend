@@ -7,7 +7,9 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public isAuth = () => this._authService.isAuth();
+  public get isAuth(): boolean {
+    return this._authService.isAuth
+  }
 
   constructor(private _authService: AuthService) { }
 }
