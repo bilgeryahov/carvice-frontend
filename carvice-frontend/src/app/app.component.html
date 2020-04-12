@@ -19,7 +19,7 @@
         <i class="fa fa-user w3-xxlarge"></i>
         <p>PROFILE</p>
     </a>
-    <a *ngIf="isAuth" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a (click)="onSignOut()" *ngIf="isAuth" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
         <i class="fa fa-angle-double-left w3-xxlarge"></i>
         <p>SIGN OUT</p>
     </a>
@@ -41,7 +41,8 @@
             class="w3-bar-item w3-button small-navbar-button w3-padding-small">DBOARD</a>
         <a *ngIf="isAuth" routerLink="/profile"
             class="w3-bar-item w3-button small-navbar-button w3-padding-small">PROFILE</a>
-        <a *ngIf="isAuth" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGNOUT</a>
+        <a (click)="onSignOut()" *ngIf="isAuth"
+            class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGNOUT</a>
         <a routerLink="/aboutus" class="w3-bar-item w3-button small-navbar-button w3-padding-small">ABOUT</a>
     </div>
 </div>
