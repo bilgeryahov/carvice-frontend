@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IAlert } from './interfaces/IAlert';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
@@ -10,6 +11,11 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   private _alertMsg: IAlert = null;
+  private _subscriptions: Subscription[] = [];
+
+  private set _sub(sub: Subscription) {
+    this._subscriptions.push(sub);
+  }
 
   public get alertMsg(): IAlert {
     return this._alertMsg;
@@ -33,9 +39,13 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this._alertService.subject.subscribe((alertMsg: IAlert) => {
+    this._sub = this._alertService.subject.subscribe((alertMsg: IAlert) => {
       this._alertMsg = alertMsg;
       setTimeout(() => this._alertMsg = null, 3000);
     });
+  }
+
+  public ngOnDestroy(): void {
+    this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
   }
 }
