@@ -59,6 +59,7 @@
 
 <div id="main">
     <router-outlet></router-outlet>
+    <app-loader></app-loader>
     <div id="alertPanel" *ngIf="alertMsg" [ngClass]="alertPanelClass">
         <h3>{{ alertMsg.success ? 'Message' : 'Error' }}</h3>
         <p>{{ alertMsg.message }}</p>

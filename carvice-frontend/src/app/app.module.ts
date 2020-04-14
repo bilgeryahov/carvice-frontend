@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
 import { FirebaseErrorService } from './services/firebase-error.service';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { FirebaseErrorService } from './services/firebase-error.service';
     DashboardComponent,
     ProfileComponent,
     AboutusComponent,
-    HomeComponent
+    HomeComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { FirebaseErrorService } from './services/firebase-error.service';
   providers: [
     AuthService,
     AlertService,
-    FirebaseErrorService
+    FirebaseErrorService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })

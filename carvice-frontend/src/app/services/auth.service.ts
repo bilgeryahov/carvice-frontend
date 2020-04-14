@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FirebaseError, User } from 'firebase';
 import { FirebaseErrorService } from './firebase-error.service';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AuthService {
   constructor(
     private _firebaseAuth: AngularFireAuth,
     private _router: Router,
-    private _firebaseErrorService: FirebaseErrorService
+    private _firebaseErrorService: FirebaseErrorService,
+    private _loaderService: LoaderService
   ) {
     this._attachAuthListener();
   }
@@ -39,8 +41,13 @@ export class AuthService {
   }
 
   public signIn(email: string, password: string): void {
+    this._loaderService.show();
     this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
-      .catch((err: FirebaseError) => this._firebaseErrorService.onError(err));
+      .then(() => this._loaderService.hide())
+      .catch((err: FirebaseError) => {
+        this._loaderService.hide();
+        this._firebaseErrorService.onError(err);
+      });
   }
 
   public signOut(): void {
