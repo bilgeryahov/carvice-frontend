@@ -52,4 +52,8 @@ export class AppComponent implements OnInit {
   public onSignOut(): void {
     this._authService.signOut();
   }
+
+  public pathNameMatches(path: string): boolean {
+    return window.location.pathname.includes(path);
+  }
 }

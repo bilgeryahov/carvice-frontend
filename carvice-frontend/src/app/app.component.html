@@ -1,29 +1,35 @@
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center w3-blue">
-    <a routerLink="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a routerLink="/home"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/home')}">
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a *ngIf="!isAuth" routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth" routerLink="/signup"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/signup')}">
         <i class="fa fa-address-card w3-xxlarge"></i>
         <p>SIGN UP</p>
     </a>
-    <a *ngIf="!isAuth" routerLink="/signin" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="!isAuth" routerLink="/signin"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/signin')}">
         <i class="fa fa-angle-double-right w3-xxlarge"></i>
         <p>SIGN IN</p>
     </a>
-    <a *ngIf="isAuth" routerLink="/dashboard" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="isAuth" routerLink="/dashboard"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/dashboard')}">
         <i class="fa fa-eye w3-xxlarge"></i>
         <p>DASHBOARD</p>
     </a>
-    <a *ngIf="isAuth" routerLink="/profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a *ngIf="isAuth" routerLink="/profile"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/profile')}">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>PROFILE</p>
     </a>
-    <a (click)="onSignOut()" *ngIf="isAuth" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a (click)="onSignOut()" *ngIf="isAuth" [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true}">
         <i class="fa fa-angle-double-left w3-xxlarge"></i>
         <p>SIGN OUT</p>
     </a>
-    <a routerLink="/aboutus" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
+    <a routerLink="/aboutus"
+        [ngClass]="{'w3-bar-item w3-button w3-padding-large w3-hover-white': true, 'w3-white': pathNameMatches('/aboutus')}">
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>ABOUT US</p>
     </a>
@@ -32,18 +38,22 @@
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium w3-blue">
     <div class="w3-bar w3-center w3-tiny">
-        <a routerLink="/" class="w3-bar-item w3-button small-navbar-button w3-padding-small">HOME</a>
-        <a *ngIf="!isAuth" routerLink="/signup" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN
+        <a routerLink="/home"
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/home')}">HOME</a>
+        <a *ngIf="!isAuth" routerLink="/signup"
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/signup')}">SIGN
             UP</a>
-        <a *ngIf="!isAuth" routerLink="/signin" class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGN
+        <a *ngIf="!isAuth" routerLink="/signin"
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/signin')}">SIGN
             IN</a>
         <a *ngIf="isAuth" routerLink="/dashboard"
-            class="w3-bar-item w3-button small-navbar-button w3-padding-small">DBOARD</a>
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/dashboard')}">DBOARD</a>
         <a *ngIf="isAuth" routerLink="/profile"
-            class="w3-bar-item w3-button small-navbar-button w3-padding-small">PROFILE</a>
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/profile')}">PROFILE</a>
         <a (click)="onSignOut()" *ngIf="isAuth"
-            class="w3-bar-item w3-button small-navbar-button w3-padding-small">SIGNOUT</a>
-        <a routerLink="/aboutus" class="w3-bar-item w3-button small-navbar-button w3-padding-small">ABOUT</a>
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true}">SIGNOUT</a>
+        <a routerLink="/aboutus"
+            [ngClass]="{'w3-bar-item w3-button small-navbar-button w3-padding-small': true, 'w3-white': pathNameMatches('/aboutus')}">ABOUT</a>
     </div>
 </div>
 
