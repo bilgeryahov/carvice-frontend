@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInfo } from 'firebase';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public get userInfo(): UserInfo {
+    return this._authService.userInfo;
+  }
+
+  constructor(
+    private _authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
