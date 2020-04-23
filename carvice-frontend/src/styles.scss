@@ -6,25 +6,13 @@ body, h1, h2, h3, h4, h5, h6 {
     border-left: 5px solid orange;
 }
 
-.w3-sidebar {
-    width: 120px;
-}
-
-#main {
-    margin-left: 120px;
-
-    .auth-form {
-        width: 60%;
-        margin: auto;
-    }
+.auth-form {
+    width: 60%;
+    margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
-    #main {
-        margin-left: 0;
-
-        .auth-form {
-            width: 100%;
-        }
+    .auth-form {
+        width: 100%;
     }
 }

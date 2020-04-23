@@ -2,8 +2,22 @@
     width: 20% !important;
 }
 
-#alertPanel {
-    position: fixed;
-    top: 0;
-    width: 100%;
+.w3-sidebar {
+    width: 120px;
+}
+
+#main {
+    margin-left: 120px;
+
+    #alertPanel {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #main {
+        margin-left: 0;
+    }
 }

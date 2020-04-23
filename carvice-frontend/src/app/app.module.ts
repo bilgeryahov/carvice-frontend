@@ -13,6 +13,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
 import { FirebaseErrorService } from './services/firebase-error.service';
@@ -27,7 +28,8 @@ import { LoaderService } from './services/loader.service';
     ProfileComponent,
     AboutusComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    VehiclesComponent
   ],
   imports: [
     BrowserModule,
