@@ -9,8 +9,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
+  private _selectedTab: string = 'vehicles';
+
   public get userInfo(): UserInfo {
     return this._authService.userInfo;
+  }
+
+  public get selectedTab(): string {
+    return this._selectedTab;
   }
 
   constructor(
@@ -18,6 +24,10 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  public onTabSelect(tab: string): void {
+    this._selectedTab = tab;
   }
 
 }

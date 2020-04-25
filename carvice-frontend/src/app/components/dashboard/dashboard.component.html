@@ -1,4 +1,23 @@
 <div class="w3-container">
     <p class="w3-panel w3-leftbar w3-sand w3-padding" id="welcomeMsg">Welcome {{ userInfo.displayName }}</p>
-    <app-vehicles></app-vehicles>
+
+    <div class="w3-row w3-center">
+        <a href="javascript:void(0)" (click)="onTabSelect('vehicles')">
+            <div
+                [ngClass]="{'w3-half w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'vehicles')}">
+                Vehicles</div>
+        </a>
+        <a href="javascript:void(0)" (click)="onTabSelect('inspect-single')">
+            <div
+                [ngClass]="{'w3-half w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'inspect-single')}">
+                Inspect Single</div>
+        </a>
+    </div>
+
+    <br />
+
+    <app-vehicles *ngIf="selectedTab === 'vehicles'"></app-vehicles>
+
+    <div *ngIf="selectedTab === 'inspect-single'">Inspect Single</div>
+
 </div>
