@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import * as uuid from "uuid";
 import { IAlert } from '../interfaces/IAlert';
 
 @Injectable({
@@ -15,10 +16,10 @@ export class AlertService {
   constructor() { }
 
   public success(message: string): void {
-    this._subject.next({ success: true, message } as IAlert);
+    this._subject.next({ id: uuid.v4(), success: true, message, closing: false } as IAlert);
   }
 
   public error(debug: string): void {
-    this.subject.next({ success: false, message: debug } as IAlert);
+    this.subject.next({ id: uuid.v4(), success: false, message: debug, closing: false } as IAlert);
   }
 }

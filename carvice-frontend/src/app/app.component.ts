@@ -10,27 +10,19 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private _alertMsg: IAlert = null;
   private _subscriptions: Subscription[] = [];
+  private _alerts: IAlert[] = [];
 
   private set _sub(sub: Subscription) {
     this._subscriptions.push(sub);
   }
 
-  public get alertMsg(): IAlert {
-    return this._alertMsg;
+  public get alerts(): IAlert[] {
+    return this._alerts;
   }
 
   public get isAuth(): boolean {
     return this._authService.isAuth
-  }
-
-  public get alertPanelClass(): Object {
-    return {
-      'w3-panel w3-round w3-card-4': true,
-      'w3-green': this._alertMsg && this._alertMsg.success,
-      'w3-orange': this._alertMsg && !this._alertMsg.success
-    }
   }
 
   constructor(
@@ -39,9 +31,14 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this._sub = this._alertService.subject.subscribe((alertMsg: IAlert) => {
-      this._alertMsg = alertMsg;
-      setTimeout(() => this._alertMsg = null, 3000);
+    this._sub = this._alertService.subject.subscribe((newAlert: IAlert) => {
+      this._alerts.push(newAlert);
+      setTimeout(() => {
+        this._alerts.filter((alert: IAlert) => alert.id === newAlert.id)[0].closing = true;
+        setTimeout(() => {
+          this._alerts = this._alerts.filter((alert: IAlert) => alert.id !== newAlert.id);
+        }, 250);
+      }, 3000);
     });
   }
 

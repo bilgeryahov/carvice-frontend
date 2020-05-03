@@ -60,8 +60,11 @@
 <div id="main">
     <router-outlet></router-outlet>
     <app-loader></app-loader>
-    <div id="alertPanel" *ngIf="alertMsg" [ngClass]="alertPanelClass">
-        <h3>{{ alertMsg.success ? 'Message' : 'Error' }}</h3>
-        <p>{{ alertMsg.message }}</p>
+    <div style="position: fixed; top: 0; width: 100%;">
+        <div *ngFor="let alert of alerts"
+            [ngClass]="{'w3-panel w3-round w3-card-4': true, 'w3-green': alert.success, 'w3-orange': !alert.success, 'max-opacity': alert.closing}">
+            <h3>{{ alert.success ? 'Success' : 'Error' }}</h3>
+            <p>{{ alert.message }}</p>
+        </div>
     </div>
 </div>
