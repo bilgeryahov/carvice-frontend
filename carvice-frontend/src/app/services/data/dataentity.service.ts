@@ -32,7 +32,9 @@ export abstract class DataEntityService<T> {
             .pipe(
                 flatMap(
                     (data: firebase.firestore.QuerySnapshot) => forkJoin(
-                        data.docs.map((item: firebase.firestore.QueryDocumentSnapshot) => of(({ ...item.data(), id: item.id } as unknown as T)))
+                        data.docs.map((item: firebase.firestore.QueryDocumentSnapshot) =>
+                            of(({ ...item.data(), id: item.id } as unknown as T))
+                        )
                     )
                 )
             )
