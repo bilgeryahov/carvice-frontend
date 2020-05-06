@@ -8,8 +8,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { AddEditVehicleComponent } from './components/add-edit-vehicle/add-edit-vehicle.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { InspectVehicleComponent } from './components/inspect-vehicle/inspect-vehicle.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ShrdTableComponent } from './components/shared/shrd-table/shrd-table.component';
@@ -33,7 +35,9 @@ import { LoaderService } from './services/loader.service';
     HomeComponent,
     LoaderComponent,
     VehiclesComponent,
-    ShrdTableComponent
+    ShrdTableComponent,
+    AddEditVehicleComponent,
+    InspectVehicleComponent
   ],
   imports: [
     BrowserModule,

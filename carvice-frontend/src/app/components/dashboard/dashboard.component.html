@@ -1,23 +1,24 @@
 <div class="w3-container">
     <p class="w3-panel w3-leftbar w3-sand w3-padding" id="welcomeMsg">Welcome {{ userInfo.displayName }}</p>
-
     <div class="w3-row w3-center">
         <a href="javascript:void(0)" (click)="onTabSelect('vehicles')">
             <div
-                [ngClass]="{'w3-half w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'vehicles')}">
+                [ngClass]="{'w3-third w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'vehicles')}">
                 Vehicles</div>
         </a>
-        <a href="javascript:void(0)" (click)="onTabSelect('inspect-single')">
+        <a href="javascript:void(0)" (click)="onTabSelect('add-edit-vehicle')">
             <div
-                [ngClass]="{'w3-half w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'inspect-single')}">
-                Inspect Single</div>
+                [ngClass]="{'w3-third w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'add-edit-vehicle')}">
+                Add/Edit Vehicle</div>
+        </a>
+        <a href="javascript:void(0)" (click)="onTabSelect('inspect-vehicle')">
+            <div
+                [ngClass]="{'w3-third w3-bottombar w3-hover-light-grey w3-padding' : true, 'w3-border-sand': (selectedTab === 'inspect-vehicle')}">
+                Inspect Vehicle</div>
         </a>
     </div>
-
     <br />
-
     <app-vehicles *ngIf="selectedTab === 'vehicles'"></app-vehicles>
-
-    <div *ngIf="selectedTab === 'inspect-single'">Inspect Single</div>
-
+    <app-add-edit-vehicle *ngIf="selectedTab === 'add-edit-vehicle'"></app-add-edit-vehicle>
+    <app-inspect-vehicle *ngIf="selectedTab === 'inspect-vehicle'"></app-inspect-vehicle>
 </div>
