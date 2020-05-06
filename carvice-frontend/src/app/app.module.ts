@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { environment } from '../environments/environment';
@@ -11,11 +12,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ShrdTableComponent } from './components/shared/shrd-table/shrd-table.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
+import { VehicleService } from './services/data/vehicle.service';
 import { FirebaseErrorService } from './services/firebase-error.service';
 import { LoaderService } from './services/loader.service';
 
@@ -29,7 +32,8 @@ import { LoaderService } from './services/loader.service';
     AboutusComponent,
     HomeComponent,
     LoaderComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    ShrdTableComponent
   ],
   imports: [
     BrowserModule,
@@ -37,13 +41,15 @@ import { LoaderService } from './services/loader.service';
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
     AuthService,
     AlertService,
     FirebaseErrorService,
-    LoaderService
+    LoaderService,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })
