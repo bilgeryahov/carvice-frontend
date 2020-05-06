@@ -1,14 +1,8 @@
 <div class="w3-container">
     <h2>Vehicles</h2>
     <div class="w3-bar w3-margin-bottom">
-        <button class="w3-button w3-indigo w3-margin-right actionBtn">New</button>
-        <button class="w3-button w3-indigo w3-margin-right actionBtn">Inspect</button>
         <button class="w3-button w3-indigo w3-margin-right actionBtn">Delete</button>
     </div>
-    <app-shrd-table
-        [collection] = "vehicles"
-        [headers] = "vehiclesHeaders"    
-        [selectable] = "vehiclesSelectable"
-        [palette] = "vehiclesPalette"
-    ></app-shrd-table>
+    <app-shrd-table [collection]="vehicles" [headers]="vehiclesHeaders" [selectable]="vehiclesSelectable"
+        [palette]="vehiclesPalette"></app-shrd-table>
 </div>
