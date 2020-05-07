@@ -83,6 +83,7 @@ export class AuthService {
   }
 
   public signOut(): void {
-    this._firebaseAuth.auth.signOut();
+    // reload the page, so the Angular services re-instantiate
+    this._firebaseAuth.auth.signOut().then(() => window.location.reload());
   }
 }
