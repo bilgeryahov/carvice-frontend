@@ -43,7 +43,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit() {
-    this._sub = this._vehicleService.getMany().subscribe(
+    this._sub = this._vehicleService.readMany().subscribe(
       (vehicles: IVehicle[]) => this._vehicles = vehicles
     );
   }
