@@ -8,21 +8,22 @@
         </thead>
         <tr *ngFor="let item of collection">
             <td *ngIf="selectable">
-                <input class="w3-check" type="checkbox">
+                <input class="w3-check" type="checkbox" (change)="onChangeSelect($event, item.id)">
             </td>
             <td *ngFor="let header of headers">
                 {{ item[header.attribute] }}
             </td>
         </tr>
     </table>
-    <!-- Paging still not there -->
-    <div class="w3-show-inline-block w3-right w3-margin-top">
+    <div *ngIf="pages.length > 0" class="w3-show-inline-block w3-right w3-margin-top">
         <div class="w3-bar w3-border">
             <a class="w3-bar-item w3-button">&laquo;</a>
-            <a class="w3-bar-item w3-button w3-indigo">1</a>
+            <a *ngFor="let pageNr of pages" class="w3-bar-item w3-button">{{pageNr}}</a>
+            <!-- <a class="w3-bar-item w3-button w3-indigo">1</a>
             <a class="w3-bar-item w3-button">2</a>
             <a class="w3-bar-item w3-button">3</a>
             <a class="w3-bar-item w3-button">4</a>
+             -->
             <a class="w3-bar-item w3-button">&raquo;</a>
         </div>
     </div>
