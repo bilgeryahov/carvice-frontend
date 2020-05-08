@@ -1,8 +1,9 @@
 <div class="w3-container">
     <h2>Vehicles</h2>
     <div class="w3-bar w3-margin-bottom">
-        <button class="w3-button w3-indigo w3-margin-right actionBtn">Delete</button>
+        <button class="w3-button w3-indigo w3-margin-right actionBtn" [disabled]="selectedVehicleIds.length === 0"
+            (click)="onDeleteVehicles()">Delete</button>
     </div>
     <app-shrd-table [collection]="vehicles" [headers]="vehiclesHeaders" [selectable]="vehiclesSelectable"
-        [palette]="vehiclesPalette"></app-shrd-table>
+        [palette]="vehiclesPalette" [pageLength]="4" (selected)="onSelectedVehiclesChange($event)"></app-shrd-table>
 </div>

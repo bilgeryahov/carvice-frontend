@@ -12,9 +12,14 @@ import { VehicleService } from 'src/app/services/data/vehicle.service';
 export class VehiclesComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
   private _vehicles: IVehicle[] = [];
+  private _selectedVehicleIds: string[] = [];
 
   private set _sub(sub: Subscription) {
     this._subscriptions.push(sub);
+  }
+
+  public get selectedVehicleIds(): string[] {
+    return this._selectedVehicleIds;
   }
 
   public get vehicles(): IVehicle[] {
@@ -42,13 +47,25 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     private _vehicleService: VehicleService
   ) { }
 
-  public ngOnInit() {
+  private _fetchVehicles(): void {
     this._sub = this._vehicleService.readMany().subscribe(
       (vehicles: IVehicle[]) => this._vehicles = vehicles
     );
   }
 
+  public ngOnInit() {
+    this._fetchVehicles();
+  }
+
   public ngOnDestroy(): void {
     this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+  }
+
+  public onSelectedVehiclesChange(selectedIds: string[]): void {
+    this._selectedVehicleIds = selectedIds;
+  }
+
+  public onDeleteVehicles(): void {
+    this._vehicleService.delete(this._selectedVehicleIds).subscribe(() => this._fetchVehicles());
   }
 }
