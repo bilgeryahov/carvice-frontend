@@ -25,6 +25,22 @@ export abstract class DataEntityService<T> {
         return this._dataEntityDBSegment + this._path;
     }
 
+    public subscribeCollectionValueChanges(): Observable<T[]> | Observable<never> {
+        if (!this._authService.isAuth)
+            return throwError('Not Authenticated');
+
+        return this._firebaseFirestore.collection(this._getFullPath())
+            .valueChanges({ idField: 'id' })
+            .pipe(
+                flatMap((data: Object[]) => {
+                    if (data.length !== 0) {
+                        return forkJoin(data.map((item: Object) => of(item as T)));
+                    }
+                    return of([] as T[]);
+                })
+            );
+    }
+
     public createOne(dataEntity: T): Observable<any> {
         if (!this._authService.isAuth)
             return throwError('Not Authenticated');
