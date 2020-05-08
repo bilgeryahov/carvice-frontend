@@ -25,7 +25,7 @@ export abstract class DataEntityService<T> {
         return this._dataEntityDBSegment + this._path;
     }
 
-    public createOne(dataEntity: T) {
+    public createOne(dataEntity: T): Observable<any> {
         if (!this._authService.isAuth)
             return throwError('Not Authenticated');
 
@@ -56,13 +56,36 @@ export abstract class DataEntityService<T> {
                 flatMap(
                     (data: firebase.firestore.QuerySnapshot) => {
                         this._loaderService.hide();
-                        return forkJoin(
-                            data.docs.map((item: firebase.firestore.QueryDocumentSnapshot) =>
-                                of(({ ...item.data(), id: item.id } as unknown as T))
-                            )
-                        );
+                        if (data.docs.length !== 0) {
+                            return forkJoin(
+                                data.docs.map((item: firebase.firestore.QueryDocumentSnapshot) =>
+                                    of(({ ...item.data(), id: item.id } as unknown as T))
+                                )
+                            );
+                        }
+                        return of([] as T[]);
                     }
                 )
             );
+    }
+
+    public delete(dataEntityIds: string[]): Observable<any> {
+        if (!this._authService.isAuth)
+            return throwError('Not Authenticated');
+
+        this._loaderService.show();
+
+        return from(
+            forkJoin(
+                dataEntityIds.map((id: string) => this._firebaseFirestore.collection(this._getFullPath()).doc(`/${id}`).delete())
+            )
+        ).pipe(
+            mergeMap(
+                () => {
+                    this._loaderService.hide();
+                    return of(undefined);
+                }
+            )
+        );
     }
 }
