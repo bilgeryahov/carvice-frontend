@@ -3,11 +3,12 @@
     <div class="w3-right" style="padding-right: 16px;">
         <input class="w3-radio w3-margin-right" type="checkbox">
         <label>I want to edit an existing vehicle</label>
-        <select class="w3-select w3-margin-top" name="option" style="max-width: 300px; display: block;">
+        <select class="w3-select w3-margin-top" style="max-width: 300px; display: block;">
             <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
+            <option *ngFor="let vehicle of vehiclesList" value="vehicle.id">{{ vehicle.plate }}</option>
+            <!-- <option value="1">Option 1</option>
             <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="3">Option 3</option> -->
         </select>
     </div>
     <div style="clear: both;"></div>

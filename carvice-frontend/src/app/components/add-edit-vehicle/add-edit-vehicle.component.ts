@@ -13,9 +13,14 @@ import { VehicleService } from 'src/app/services/data/vehicle.service';
 export class AddEditVehicleComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
   private _addEditForm: FormGroup = null;
+  private _vehiclesList: IVehicle[] = [];
 
   private set _sub(sub: Subscription) {
     this._subscriptions.push(sub);
+  }
+
+  public get vehiclesList(): IVehicle[] {
+    return this._vehiclesList;
   }
 
   public get addEditForm(): FormGroup {
@@ -38,6 +43,10 @@ export class AddEditVehicleComponent implements OnInit, OnDestroy {
       plate: new FormControl('', { validators: [Validators.required] }),
       type: new FormControl('', { validators: [Validators.required] })
     });
+
+    this._sub = this._vehicleService.subscribeCollectionValueChanges().subscribe(
+      (vehicles: IVehicle[]) => this._vehiclesList = vehicles
+    );
   }
 
   public ngOnDestroy(): void {
