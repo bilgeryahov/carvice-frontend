@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { IVehicle } from 'src/app/interfaces/data-entities/IVehicle';
 import { AlertService } from 'src/app/services/alert.service';
 import { VehicleService } from 'src/app/services/data/vehicle.service';
@@ -9,9 +10,13 @@ import { VehicleService } from 'src/app/services/data/vehicle.service';
   templateUrl: './add-edit-vehicle.component.html',
   styleUrls: ['./add-edit-vehicle.component.scss']
 })
-export class AddEditVehicleComponent implements OnInit {
-
+export class AddEditVehicleComponent implements OnInit, OnDestroy {
+  private _subscriptions: Subscription[] = [];
   private _addEditForm: FormGroup = null;
+
+  private set _sub(sub: Subscription) {
+    this._subscriptions.push(sub);
+  }
 
   public get addEditForm(): FormGroup {
     return this._addEditForm;
@@ -35,8 +40,12 @@ export class AddEditVehicleComponent implements OnInit {
     });
   }
 
+  public ngOnDestroy(): void {
+    this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+  }
+
   public onSave(): void {
-    this._vehicleService.createOne({
+    this._sub = this._vehicleService.createOne({
       brand: this._addEditForm.value.brand,
       model: this._addEditForm.value.model,
       plate: this._addEditForm.value.plate,
