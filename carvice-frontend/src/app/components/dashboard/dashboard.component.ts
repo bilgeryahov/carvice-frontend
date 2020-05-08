@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  private _selectedTab: string = 'add-edit-vehicle';
+  private _selectedTab: string = 'vehicles';
 
   public get userInfo(): UserInfo {
     return this._authService.userInfo;
