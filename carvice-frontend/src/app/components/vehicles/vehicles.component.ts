@@ -47,14 +47,10 @@ export class VehiclesComponent implements OnInit, OnDestroy {
     private _vehicleService: VehicleService
   ) { }
 
-  private _fetchVehicles(): void {
-    this._sub = this._vehicleService.readMany().subscribe(
+  public ngOnInit(): void {
+    this._sub = this._vehicleService.subscribeCollectionValueChanges().subscribe(
       (vehicles: IVehicle[]) => this._vehicles = vehicles
     );
-  }
-
-  public ngOnInit() {
-    this._fetchVehicles();
   }
 
   public ngOnDestroy(): void {
@@ -66,6 +62,6 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   }
 
   public onDeleteVehicles(): void {
-    this._vehicleService.delete(this._selectedVehicleIds).subscribe(() => this._fetchVehicles());
+    this._sub = this._vehicleService.delete(this._selectedVehicleIds).subscribe();
   }
 }
