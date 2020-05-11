@@ -1,31 +1,25 @@
+import { Inject } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { forkJoin, from, Observable, of, throwError } from 'rxjs';
 import { flatMap, mergeMap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { LoaderService } from '../loader.service';
 
+// todo: think of handling errors
 export abstract class DataEntityService<T> {
-    private _dataEntityDBSegment = null;
-
-    protected _path: string;
-
-    // todo: think of handling errors
+    protected abstract _path: string;
 
     constructor(
-        protected _authService: AuthService,
-        protected _firebaseFirestore: AngularFirestore,
-        protected _loaderService: LoaderService
-
-    ) {
-        if (this._authService.isAuth)
-            this._dataEntityDBSegment = `/users/${this._authService.userInfo.uid}`;
-    }
+        @Inject(AuthService) protected _authService: AuthService,
+        @Inject(AngularFirestore) protected _firebaseFirestore: AngularFirestore,
+        @Inject(LoaderService) protected _loaderService: LoaderService
+    ) { }
 
     private _getFullPath(): string {
-        return this._dataEntityDBSegment + this._path;
+        return `/users/${this._authService.userInfo.uid}` + this._path;
     }
 
-    public subscribeCollectionValueChanges(): Observable<T[]> | Observable<never> {
+    public collection(): Observable<T[]> | Observable<never> {
         if (!this._authService.isAuth)
             return throwError('Not Authenticated');
 
