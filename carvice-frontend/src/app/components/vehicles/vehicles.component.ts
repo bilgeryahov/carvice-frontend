@@ -48,7 +48,7 @@ export class VehiclesComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
-    this._sub = this._vehicleService.subscribeCollectionValueChanges().subscribe(
+    this._sub = this._vehicleService.collection().subscribe(
       (vehicles: IVehicle[]) => this._vehicles = vehicles
     );
   }

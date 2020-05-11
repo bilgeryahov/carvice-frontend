@@ -44,7 +44,7 @@ export class AddEditVehicleComponent implements OnInit, OnDestroy {
       type: new FormControl('', { validators: [Validators.required] })
     });
 
-    this._sub = this._vehicleService.subscribeCollectionValueChanges().subscribe(
+    this._sub = this._vehicleService.collection().subscribe(
       (vehicles: IVehicle[]) => this._vehiclesList = vehicles
     );
   }
