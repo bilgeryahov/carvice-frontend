@@ -4,6 +4,6 @@
         <button class="w3-button w3-indigo w3-margin-right actionBtn" [disabled]="selectedVehicleIds.length === 0"
             (click)="onDeleteVehicles()">Delete</button>
     </div>
-    <app-shrd-table [collection]="vehicles" [headers]="vehiclesHeaders" [selectable]="vehiclesSelectable"
-        [palette]="vehiclesPalette" [pageLength]="4" (selected)="onSelectedVehiclesChange($event)"></app-shrd-table>
+    <app-shrd-table [_collection]="vehicles" [_headers]="vehiclesHeaders" [_selectable]="vehiclesSelectable"
+        [_palette]="vehiclesPalette" [_pageLength]="4" (_selected)="onSelectedVehiclesChange($event)"></app-shrd-table>
 </div>
