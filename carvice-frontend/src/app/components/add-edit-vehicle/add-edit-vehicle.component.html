@@ -1,20 +1,18 @@
 <div class="w3-container">
     <h2>Add/Edit Vehicle</h2>
     <div class="w3-right" style="padding-right: 16px;">
-        <input class="w3-radio w3-margin-right" type="checkbox">
+        <input [(ngModel)]="editCheck" (change)="onChangeEditCheck()" class="w3-radio w3-margin-right" type="checkbox">
         <label>I want to edit an existing vehicle</label>
-        <select class="w3-select w3-margin-top" style="max-width: 300px; display: block;">
-            <option value="" disabled selected>Choose your option</option>
-            <option *ngFor="let vehicle of vehiclesList" value="vehicle.id">{{ vehicle.plate }}</option>
-            <!-- <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option> -->
+        <select [disabled]="!editCheck" (change)="onChangeVehicleSelect($event.target.value)"
+            class="w3-select w3-margin-top" style="max-width: 300px; display: block;">
+            <option value="" selected>{{chooseYourOptionString}}</option>
+            <option *ngFor="let vehicle of vehiclesList" [value]="vehicle.id">{{ vehicle.plate }}</option>
         </select>
     </div>
     <div style="clear: both;"></div>
     <form [formGroup]="addEditForm" (ngSubmit)="onSave()"
         class="w3-container w3-card-4 w3-light-grey w3-text-indigo w3-margin">
-        <h2 class="w3-center">New Vehicle</h2>
+        <h2 class="w3-center">{{ vehicle.plate || 'New Vehicle' }}</h2>
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
             <div class="w3-rest">

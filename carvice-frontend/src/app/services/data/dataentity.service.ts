@@ -54,6 +54,27 @@ export abstract class DataEntityService<T> {
         );
     }
 
+    public readOne(id: string): Observable<any> {
+        if (!this._authService.isAuth)
+            return throwError('Not Authenticated');
+
+        this._loaderService.show();
+
+        return from(
+            this._firebaseFirestore.collection(this._getFullPath()).doc(`/${id}`).get()
+        ).pipe(
+            flatMap(
+                (data: firebase.firestore.DocumentSnapshot) => {
+                    this._loaderService.hide();
+                    if (typeof data.id !== 'undefined' && data.id !== null) {
+                        return of(({ ...data.data(), id: data.id } as unknown as T));
+                    }
+                    return of(null);
+                }
+            )
+        );
+    }
+
     public readMany(): Observable<T[]> | Observable<never> {
         if (!this._authService.isAuth)
             return throwError('Not Authenticated');
@@ -77,6 +98,26 @@ export abstract class DataEntityService<T> {
                     }
                 )
             );
+    }
+
+    public updateOne(dataEntity: T, id: string): Observable<any> {
+        if (!this._authService.isAuth)
+            return throwError('Not Authenticated');
+
+        this._loaderService.show();
+
+        delete dataEntity['id'];
+
+        return from(
+            this._firebaseFirestore.collection(this._getFullPath()).doc(`/${id}`).update(dataEntity)
+        ).pipe(
+            mergeMap(
+                () => {
+                    this._loaderService.hide();
+                    return of(undefined);
+                }
+            )
+        );
     }
 
     public delete(dataEntityIds: string[]): Observable<any> {
